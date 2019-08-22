@@ -1,5 +1,6 @@
 const axios = require('axios');
-
+var lat;
+var lon;
 const publicIp = require('public-ip');
 
 //let result = publicIp.v4()
@@ -19,24 +20,44 @@ const publicIp = require('public-ip');
       .then(response => {
         //console.log(response);
         console.log(response.data);
+        let lat = response.data.latitude
+        let lon = response.data.longitude
+
+
+
+
+
+
+
+        axios.get('http://api.open-notify.org/iss-pass.json?lat='+lat+'&lon='+lon)
+          .then(response => {
+            //console.log(response);
+            console.log(response.data);
+
+          })
+          .catch(error => {
+            console.log(error);
+          });
+
+
+
+
+
+
+
+        console.log("lat 1st"+lat);
+        console.log("lon 1st"+lon);
 
       })
       .catch(error => {
         console.log(error);
       });
 
+console.log("lat 2nd"+lat);
+console.log("lat 2nd"+lon);
 
 
 
-      axios.get('http://api.open-notify.org/iss-pass.json?lat=53.0&lon=-0.2')
-        .then(response => {
-          //console.log(response);
-          console.log(response.data);
-
-        })
-        .catch(error => {
-          console.log(error);
-        });
 
 
 
