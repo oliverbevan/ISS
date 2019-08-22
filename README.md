@@ -12,3 +12,5 @@ npm install
 2. install dependencies: (command: npm install)
 
 happy developing!
+
+to run application command: node getRequest.js
